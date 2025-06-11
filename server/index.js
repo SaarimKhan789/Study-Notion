@@ -9,7 +9,7 @@ const contactUsRoute = require("../server/routes/Contact");
 const database = require("../server/config/database");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const {cloudinaryConnect } = require("../server/config/cloudinary");
+const { cloudinaryConnect } = require("../server/config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
@@ -21,19 +21,30 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin:"https://study-notion-3o3d-8fkhuom6h-saarimkhan515-gmailcoms-projects.vercel.app",
-		credentials:true,
-	})
-)
+const allowedOrigins = [
+  "https://study-notion-3o3d.vercel.app",
+  "https://study-notion-3o3d-i5thcs9zh-saarimkhan515-gmailcoms-projects.vercel.app",
+];
 
 app.use(
-	fileUpload({
-		useTempFiles:true,
-		tempFileDir:"/tmp",
-	})
-)
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp",
+  })
+);
 //cloudinary connection
 cloudinaryConnect();
 
@@ -47,13 +58,12 @@ app.use("/api/v1/reach", contactUsRoute);
 //def route
 
 app.get("/", (req, res) => {
-	return res.json({
-		success:true,
-		message:'Your server is up and running....'
-	});
+  return res.json({
+    success: true,
+    message: "Your server is up and running....",
+  });
 });
 
 app.listen(PORT, () => {
-	console.log(`App is running at ${PORT}`)
-})
-
+  console.log(`App is running at ${PORT}`);
+});
