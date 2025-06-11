@@ -21,17 +21,20 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+
 const allowedOrigins = [
   "https://study-notion-3o3d.vercel.app",
-  "https://study-notion-3o3d-i5thcs9zh-saarimkhan515-gmailcoms-projects.vercel.app",
+  "https://study-notion-3o3d-ngg5c4nkn-saarimkhan515-gmailcoms-projects.vercel.app",
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
+      console.log("🔍 Incoming request from:", origin); // Optional for debugging
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.error("CORS Rejected:", origin);
         callback(new Error("Not allowed by CORS"));
       }
     },
