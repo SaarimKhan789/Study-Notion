@@ -1,31 +1,67 @@
-# Study Notion
+# StudyNotion - An Ed-Tech Platform
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+![StudyNotion Architecture](images/architecture.png)
 
-## Usage
+A fully functional ed-tech platform that enables users to create, consume, and rate educational content. Built using the MERN stack (MongoDB, Express.js, React.js, Node.js).
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+## Features
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+### For Students
+- Browse and search courses
+- Add courses to wishlist
+- Purchase courses with Razorpay integration
+- View and rate course content
+- Manage user profile
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+### For Instructors
+- Create and manage courses
+- Upload course content (videos, documents)
+- View course analytics and insights
+- Manage instructor profile
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+### Admin Features (Future Scope)
+- Platform analytics dashboard
+- User and instructor management
+- Content moderation
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+## Tech Stack
 
-## Contributing
+**Frontend:**
+- React.js
+- Redux (State Management)
+- Tailwind CSS
+- React Router
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB (Database)
+- Mongoose (ODM)
+
+**Services:**
+- Cloudinary (Media Storage)
+- Razorpay (Payment Gateway)
+- JWT (Authentication)
+- Bcrypt (Password Hashing)
+
+## System Architecture
+
+The platform follows a client-server architecture with three main components:
+1. **Frontend**: React.js application
+2. **Backend**: Node.js + Express.js server
+3. **Database**: MongoDB with Mongoose
+
+## API Design
+
+RESTful API with endpoints for:
+- User authentication (JWT)
+- Course management
+- Payment processing
+- Content delivery
+
+Sample endpoints:
+```http
+POST /api/auth/signup
+POST /api/courses
+GET /api/courses/:id
+POST /api/payment/create-order
