@@ -22,19 +22,24 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 
+const allowedPattern =
+  /^https:\/\/study-notion-[\w-]+\.saarimkhan515-gmailcoms-projects\.vercel\.app$/;
+
 const allowedOrigins = [
-  "https://study-notion-3o3d.vercel.app",
-  "https://study-notion-3o3d-ngg5c4nkn-saarimkhan515-gmailcoms-projects.vercel.app",
+  "https://study-notion-3o3d.vercel.app", // permanent domain
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      console.log("🔍 Incoming request from:", origin); // Optional for debugging
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        allowedPattern.test(origin)
+      ) {
         callback(null, true);
       } else {
-        console.error("CORS Rejected:", origin);
+        console.error(" CORS Rejected:", origin);
         callback(new Error("Not allowed by CORS"));
       }
     },
