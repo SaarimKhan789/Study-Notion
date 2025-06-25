@@ -1,6 +1,8 @@
 # StudyNotion - An Ed-Tech Platform
+<p align="center">
+  <img src="images/frontend.png" alt="StudyNotion Architecture" width="600"/>
+</p>
 
-![StudyNotion Architecture](images/architecture.png)
 
 A fully functional ed-tech platform that enables users to create, consume, and rate educational content. Built using the MERN stack (MongoDB, Express.js, React.js, Node.js).
 
