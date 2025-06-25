@@ -69,17 +69,20 @@ RESTful API with endpoints for:
 - Content delivery
 
 Sample endpoints:
-```http
-/api/auth/signup (POST)
-/api/auth/login (POST) – Log in using existing credentials and generate a JWT token.
-/api/auth/verify-otp (POST) - Verify the OTP sent to the user's registered email.
-/api/auth/forgot-password (POST) - Send an email with a password reset link to the registered email.
-/api/courses (GET) - Get a list of all available courses.
-/api/courses/:id (GET) - Get details of a specific course by ID.
-/api/courses (POST) - Create a new course.
-/api/courses/:id (PUT) - Update an existing course by ID.
-/api/courses/:id (DELETE) - Delete a course by ID.
-/api/courses/:id/rate (POST) - Add a rating (out of 5) to a course.
+# Authentication
+POST   /api/auth/signup             - Register a new user.
+POST   /api/auth/login              - Log in using credentials and get a JWT.
+POST   /api/auth/verify-otp         - Verify OTP sent to the registered email.
+POST   /api/auth/forgot-password    - Send password reset link to email.
+
+# Courses
+GET    /api/courses                 - Get all available courses.
+GET    /api/courses/:id            - Get course details by ID.
+POST   /api/courses                - Create a new course.
+PUT    /api/courses/:id            - Update a course by ID.
+DELETE /api/courses/:id            - Delete a course by ID.
+POST   /api/courses/:id/rate       - Rate a course out of 5.
+
 
 
 
